@@ -151,11 +151,11 @@
         <Button
             android:id="@+id/back_button"
 
-            android:text="GO BACC"
-
             android:layout_width="0dp"
+
             android:layout_height="match_parent"
-            android:layout_weight="5" />
+            android:layout_weight="5"
+            android:text="GO BACC" />
 
         <TextView
             style="@style/normal_text"

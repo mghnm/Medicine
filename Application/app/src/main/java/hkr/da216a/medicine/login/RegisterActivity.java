@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import hkr.da216a.medicine.DatabaseHandler;
 import hkr.da216a.medicine.R;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -76,8 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        passwordEditText.addTextChangedListener(
-                LoginUtils.clearLayoutErrorOnUpdateTextWatcher(passwordEditTextLayout));
+        passwordEditText.addTextChangedListener(LoginUtils.clearLayoutErrorOnUpdateTextWatcher(passwordEditTextLayout));
         passwordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -132,8 +132,16 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        //todo php
-        //termsOfServiceCheckBox
+        //todo first check termsOfServiceCheckBox
+
+        String task = "register";
+        String email = emailEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+        String repeatPassword = repeatPasswordEditText.getText().toString();
+
+        DatabaseHandler backgroundTask = new DatabaseHandler(RegisterActivity.this);
+        backgroundTask.execute(task, email, password, repeatPassword);
+        finish();
     }
 
     private void showTermsAndConditionsPopupWindow(View view) {

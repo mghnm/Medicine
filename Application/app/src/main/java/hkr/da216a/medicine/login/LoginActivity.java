@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import hkr.da216a.medicine.DatabaseHandler;
 import hkr.da216a.medicine.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         this.emailEditTextLayout = findViewById(R.id.login_email_text_layout);
         this.emailEditText = findViewById(R.id.login_email_text);
 
-        this.passwordEditTextLayout = findViewById(R.id.popup_forgot_text_layout);
-        this.passwordEditText = findViewById(R.id.popup_forgot_text);
+        this.passwordEditTextLayout = findViewById(R.id.loging_password_text_layout);
+        this.passwordEditText = findViewById(R.id.login_password_text);
 
         this.loginButton = findViewById(R.id.login_login_button);
 
@@ -104,6 +105,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
+        String task = "login";
+        String email = emailEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
 
+        DatabaseHandler databaseHandler = new DatabaseHandler(LoginActivity.this);
+
+        emailEditText.setText("");
+        passwordEditText.setText("");
+
+        databaseHandler.execute(task, email, password);
     }
 }

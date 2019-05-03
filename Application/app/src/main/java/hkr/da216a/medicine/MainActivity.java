@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import hkr.da216a.medicine.login.ActivityApplication;
 import hkr.da216a.medicine.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {

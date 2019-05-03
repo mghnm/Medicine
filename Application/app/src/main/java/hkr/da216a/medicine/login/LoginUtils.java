@@ -13,14 +13,14 @@ public class LoginUtils {
     static boolean isValidPassword(CharSequence email) {
         //String passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[\\d])[A-Za-z\\d-_@$!%*?&]{8,}$";
         String passwordRegex = ""; //TODO add regex
-        return ((String)email).matches(passwordRegex);
+        return email.toString().matches(passwordRegex);
     }
 
     static boolean isValidEmail(CharSequence email) {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    static boolean matchesText(CharSequence text1, CharSequence text2){
+    static boolean matchesText(CharSequence text1, CharSequence text2) {
         return text1 == text2;
     }
 

@@ -1,9 +1,7 @@
-package hkr.da216a.medicine.login;
+package hkr.da216a.medicine;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import hkr.da216a.medicine.R;
+import android.support.v7.app.AppCompatActivity;
 
 public class ActivityApplication extends AppCompatActivity {
 

@@ -4,19 +4,18 @@ import hkr.da216a.medicine.model.Doctor;
 
 public class CurrentDoctorSingleton {
 
+    private static CurrentDoctorSingleton ourInstance;
     private Doctor doctor;
     private boolean connected = false;
 
-    private static CurrentDoctorSingleton ourInstance;
+    private CurrentDoctorSingleton() {
+    }
 
     public static CurrentDoctorSingleton getInstance() {
         if (ourInstance == null) {
             ourInstance = new CurrentDoctorSingleton();
         }
         return ourInstance;
-    }
-
-    private CurrentDoctorSingleton() {
     }
 
     public static CurrentDoctorSingleton getOurInstance() {
