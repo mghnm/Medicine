@@ -1,5 +1,5 @@
 <?
-$servername = "ns1.gear.host";
+$servername = "den1.mysql3.gear.host";
 $username = "da216agroup15";
 $dbname = "da216agroup15";
 $password = "<da216a>";
