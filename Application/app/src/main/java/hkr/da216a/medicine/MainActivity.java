@@ -17,11 +17,10 @@ public class MainActivity extends AppCompatActivity {
         //todo check connection first
 
         if (CurrentDoctorSingleton.getInstance().isConnected()) {
-            myIntent = new Intent(this, ActivityApplication.class);
+            myIntent = new Intent(this, ActivityMainMenu.class);
         } else {
             myIntent = new Intent(this, LoginActivity.class);
         }
-
         startActivity(myIntent);
     }
 }

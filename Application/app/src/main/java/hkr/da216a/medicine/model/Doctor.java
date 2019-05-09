@@ -2,25 +2,27 @@ package hkr.da216a.medicine.model;
 
 public class Doctor {
 
-    private String socialSecurityNumber;
+    private int id;
     private String name;
-    private String lastName;
+    private String username;
+    private String password;
 
     public Doctor() {
     }
 
-    public Doctor(String socialSecurityNumber, String name, String lastName) {
-        this.socialSecurityNumber = socialSecurityNumber;
+    public Doctor(int id, String name, String username, String password) {
+        this.id = id;
         this.name = name;
-        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
     }
 
-    public String getSocialSecurityNumber() {
-        return socialSecurityNumber;
+    public int getId() {
+        return id;
     }
 
-    public void setSocialSecurityNumber(String socialSecurityNumber) {
-        this.socialSecurityNumber = socialSecurityNumber;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -31,11 +33,29 @@ public class Doctor {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
