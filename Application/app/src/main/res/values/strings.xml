@@ -8,7 +8,10 @@
     <string name="no_account">Don\'t have an account?</string>
     <string name="terms_of_service_first_text">I accept the</string>
     <string name="terms_of_service_second_text"><u>terms of service</u></string>
-    <string name="register_button_text">Register</string>
+    <string name="register_button_text">Register Doctor</string>
 
     <string name="terms_of_service">Our Terms of Service</string>
+    <string name="personal_number">Personal Number</string>
+    <string name="doctor_name">Doctor\'s name</string>
+    <string name="back_button_image_description">Go back to previous screen</string>
 </resources>

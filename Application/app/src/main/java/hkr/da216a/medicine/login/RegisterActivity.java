@@ -17,15 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import hkr.da216a.medicine.DatabaseHandler;
 import hkr.da216a.medicine.R;
 
 public class RegisterActivity extends AppCompatActivity {
-
     public static final String TAG = RegisterActivity.class.getSimpleName();
 
-    private TextInputLayout emailEditTextLayout;
-    private TextInputEditText emailEditText;
+    private TextInputLayout personalNumberEditTextLayout;
+    private TextInputEditText personalNumberEditText;
+
+    private TextInputLayout registerNameEditTextLayout;
+    private TextInputEditText registerNameEditText;
 
     private TextInputLayout passwordEditTextLayout;
     private TextInputEditText passwordEditText;
@@ -49,8 +50,11 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void initializeLocalVariables() {
-        this.emailEditTextLayout = findViewById(R.id.register_email_edit_text_layout);
-        this.emailEditText = findViewById(R.id.register_email_edit_text);
+        this.personalNumberEditTextLayout = findViewById(R.id.register_personal_number_edit_text_layout);
+        this.personalNumberEditText = findViewById(R.id.register_personal_number_edit_text);
+
+        this.registerNameEditTextLayout = findViewById(R.id.register_name_edit_text_layout);
+        this.registerNameEditText = findViewById(R.id.register_name_edit_text);
 
         this.passwordEditTextLayout = findViewById(R.id.register_password_edit_text_layout);
         this.passwordEditText = findViewById(R.id.register_password_edit_text);
@@ -58,20 +62,20 @@ public class RegisterActivity extends AppCompatActivity {
         this.repeatPasswordEditTextLayout = findViewById(R.id.register_repeat_password_edit_text_layout);
         this.repeatPasswordEditText = findViewById(R.id.register_repeat_password_edit_text);
 
-        this.backButton = findViewById(R.id.back_button);
-        this.termsOfServiceTextView = findViewById(R.id.register_terms_of_service_text_link);
-        this.termsOfServiceCheckBox = findViewById(R.id.register_terms_of_service_checkbox);
+        //this.backButton = findViewById(R.id.back_button);
+        //this.termsOfServiceTextView = findViewById(R.id.register_terms_of_service_text_link);
+        //this.termsOfServiceCheckBox = findViewById(R.id.register_terms_of_service_checkbox);
         this.registerButton = findViewById(R.id.register_register_button);
     }
 
     private void setupInputErrorCheckingForAllEditTexts() {
-        emailEditText.addTextChangedListener(LoginUtils.clearLayoutErrorOnUpdateTextWatcher(emailEditTextLayout));
-        emailEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        personalNumberEditText.addTextChangedListener(LoginUtils.clearLayoutErrorOnUpdateTextWatcher(personalNumberEditTextLayout));
+        personalNumberEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    if (!LoginUtils.isValidEmail(emailEditText.getText())) {
-                        emailEditTextLayout.setError("Please enter a valid Email");
+                    if (!LoginUtils.isValidEmail(personalNumberEditText.getText())) {
+                        personalNumberEditTextLayout.setError("Please enter a valid Email");
                     }
                 }
             }
@@ -132,16 +136,14 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        //todo first check termsOfServiceCheckBox
-
         String task = "register";
-        String email = emailEditText.getText().toString();
+        String email = personalNumberEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String repeatPassword = repeatPasswordEditText.getText().toString();
 
-        DatabaseHandler backgroundTask = new DatabaseHandler(RegisterActivity.this);
-        backgroundTask.execute(task, email, password, repeatPassword);
-        finish();
+
+
+        finish(); //Closes this activity and goes back to who called it (always LoginActivity)
     }
 
     private void showTermsAndConditionsPopupWindow(View view) {
