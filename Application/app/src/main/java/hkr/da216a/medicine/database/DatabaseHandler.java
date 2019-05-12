@@ -31,6 +31,7 @@ public class DatabaseHandler {
         if (ourInstance == null) {
             ourInstance = new DatabaseHandler();
         }
+        //TODO Here could have a check on if the streams/socket are still alive, otherwise prepareConnection again
         return ourInstance;
     }
 
