@@ -7,10 +7,10 @@ import android.util.Patterns;
 
 public class LoginUtils {
 
-    //Min 8 chars. Must have 1 upper-case, 1 lower-case and 1 number.
-    //Optionally accepts special characters as well.
-    //Check at: https://regex101.com/r/yG8Htx/1
     static boolean isValidPassword(CharSequence email) {
+        //Min 8 chars. Must have 1 upper-case, 1 lower-case and 1 number.
+        //Optionally accepts special characters as well.
+        //Check at: https://regex101.com/r/yG8Htx/1
         //String passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[\\d])[A-Za-z\\d-_@$!%*?&]{8,}$";
         String passwordRegex = ""; //TODO add regex
         return email.toString().matches(passwordRegex);

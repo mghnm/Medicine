@@ -9,15 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import hkr.da216a.medicine.DatabaseHandler;
+import hkr.da216a.medicine.database.DatabaseFacade;
+import hkr.da216a.medicine.database.DatabaseHandler;
 import hkr.da216a.medicine.R;
 
 public class LoginActivity extends AppCompatActivity {
-
     public static final String TAG = LoginActivity.class.getSimpleName();
 
-    private TextInputLayout emailEditTextLayout;
-    private TextInputEditText emailEditText;
+    private TextInputLayout personalNumberEditTextLayout;
+    private TextInputEditText personalNumberEditText;
 
     private TextInputLayout passwordEditTextLayout;
     private TextInputEditText passwordEditText;
@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initializeLocalVariables() {
-        this.emailEditTextLayout = findViewById(R.id.login_email_text_layout);
-        this.emailEditText = findViewById(R.id.login_email_text);
+        this.personalNumberEditTextLayout = findViewById(R.id.login_personal_number_text_layout);
+        this.personalNumberEditText = findViewById(R.id.login_personal_number_text);
 
         this.passwordEditTextLayout = findViewById(R.id.loging_password_text_layout);
         this.passwordEditText = findViewById(R.id.login_password_text);
@@ -51,13 +51,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setupInputErrorCheckingForAllEditTexts() {
-        emailEditText.addTextChangedListener(LoginUtils.clearLayoutErrorOnUpdateTextWatcher(emailEditTextLayout));
-        emailEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        personalNumberEditText.addTextChangedListener(LoginUtils.clearLayoutErrorOnUpdateTextWatcher(personalNumberEditTextLayout));
+        personalNumberEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    if (LoginUtils.isValidEmail(emailEditText.getText())) { //todo toString() ?
-                        emailEditTextLayout.setError("Please enter a valid Email");
+                    if (LoginUtils.isValidEmail(personalNumberEditText.getText())) { //todo toString() ?
+                        personalNumberEditTextLayout.setError("Please enter a valid Email");
                     }
                 }
             }
@@ -100,20 +100,23 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void openRegisterActivity() {
-        Intent myIntent = new Intent(this, RegisterActivity.class);
-        startActivity(myIntent);
+        Intent registerActivityIntent = new Intent(this, RegisterActivity.class);
+        startActivity(registerActivityIntent);
     }
 
     private void loginUser() {
-        String task = "login";
-        String email = emailEditText.getText().toString();
+        //TODO validity check for inputs
+        String personalNumber = personalNumberEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-        DatabaseHandler databaseHandler = new DatabaseHandler(LoginActivity.this);
+        DatabaseFacade.loginWithCredentials(LoginActivity.this, personalNumber, password);
 
-        emailEditText.setText("");
+        personalNumberEditText.setText("");
         passwordEditText.setText("");
-
-        databaseHandler.execute(task, email, password);
     }
+
+    public void openMainScene() {
+
+    }
+
 }
